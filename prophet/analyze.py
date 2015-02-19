@@ -36,7 +36,7 @@ class Sortino(Analyzer):
         volatility_negative_returns = negative_returns.std()
         risk_free_rate = config.get('RISK_FREE_RATE', 0)
         trading_days = config.get('YEARLY_TRADING_DAYS', 252)
-        return ((avg_daily_returns - risk_free_rate) / volatility_negative_returns
+        return (np.divide(avg_daily_returns - risk_free_rate, volatility_negative_returns)
                 * math.sqrt(trading_days))
 
 class AverageReturn(Analyzer):
